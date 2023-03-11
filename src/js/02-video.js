@@ -4,7 +4,8 @@ import trottle from 'lodash.throttle';
 const iframe = document.querySelector('iframe');
 const player = new Player(iframe);
 
-    player.on('play', function(e) {    
+player.on('play', function (e) { 
+    console.log(e);
     });
     
     player.getVideoTitle().then(function(title) {
