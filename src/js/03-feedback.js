@@ -15,9 +15,16 @@ populateTextarea();
 function onFormSubmit(event){
     event.preventDefault();
     console.log('Отправляем форму');
-
+    const formElementEmail = event.currentTarget.elements.email;
+    const formElementMessage = event.currentTarget.elements.message;
+    if (formElementEmail.value === '' || formElementMessage.value === '') {
+        alert('Всі поля повинні бути заповнені !!!');
+    } else {
     event.target.reset();
     localStorage.removeItem(STORRAGE_KEY);
+    }
+
+    
 };
 
 const formData = {};
