@@ -17,11 +17,13 @@ function onFormSubmit(event){
     console.log('Отправляем форму');
     const formElementEmail = event.currentTarget.elements.email;
     const formElementMessage = event.currentTarget.elements.message;
+
     if (formElementEmail.value === '' || formElementMessage.value === '') {
         alert('Всі поля повинні бути заповнені !!!');
+        
     } else {
     event.target.reset();
-    localStorage.removeItem(STORRAGE_KEY);
+        localStorage.removeItem(STORRAGE_KEY);
     }
 
     
@@ -30,10 +32,11 @@ function onFormSubmit(event){
 const formData = {};
 
 function onInputMessage(event) {
-
+ 
     formData[event.target.name] = event.target.value;
 
     localStorage.setItem(STORRAGE_KEY, JSON.stringify(formData));
+
 };
 
 function populateTextarea() {
@@ -42,8 +45,8 @@ function populateTextarea() {
         const localtorrageMessage = localStorage.getItem(STORRAGE_KEY);
         const objMessage = JSON.parse(localtorrageMessage);
         console.log(objMessage);
-        refs.textarea.value = objMessage.message;
-        refs.input.value = objMessage.email;
+        refs.textarea.value = objMessage.message || '';
+        refs.input.value = objMessage.email || '';
     };
     
 };
